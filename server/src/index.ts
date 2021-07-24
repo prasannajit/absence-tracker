@@ -4,13 +4,15 @@ import { members, absences } from './api';
 enum HTTP_ERROR {
     SERVER_ERROR = 500,
 };
-const SERVER_PORT=3000;
+const SERVER_PORT=8081;
 
 const app = express();
 
 app.get('/absences', async (req:Request, res:Response, next:NextFunction) => {
+    console.log(`Request received for path /absences`);
     try {
         const absenceRecords = await absences();
+        res.setHeader('Access-Control-Allow-Origin','*');
         res.json(absenceRecords);
     }
     catch (e) {
@@ -19,8 +21,10 @@ app.get('/absences', async (req:Request, res:Response, next:NextFunction) => {
 });
 
 app.get('/members', async (req:Request, res:Response, next:NextFunction) => {
+    console.log(`Request received for path /members`);
     try {
         const memberRecords = await members();
+        res.setHeader('Access-Control-Allow-Origin','*');
         res.json(memberRecords);
     }
     catch (e) {
