@@ -39,6 +39,6 @@ app.use((err:Error, req:Request, res:Response, next:NextFunction) => {
     });
 });
 
-app.listen(SERVER_PORT,()=>{
+app.listen(process.env.PORT || SERVER_PORT,()=>{
     console.log(`Express server listening on port ${SERVER_PORT}`);
 });
