@@ -5,7 +5,7 @@ export const StyledSection = styled.section`
     flex-direction: column;
     text-align: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 `;
 
 export const StyledParagraph = styled.p`
