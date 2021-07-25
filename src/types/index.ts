@@ -1,10 +1,16 @@
-export type APIResponse = {[key:string]: any};
+export type APIResponse = { [key: string]: any };
 
-export enum APITriggerStatus{
+export enum APITriggerStatus {
     NONE,
     PENDING,
     FAILED,
     SUCCESS,
 };
 
-export type APIUrl=[string,string];
+export enum AbsenceStatus {
+    REJECTED = 'Rejected',
+    CONFIRMED = 'Confirmed',
+    REQUESTED = 'Requested',
+};
+
+export type APIUrl = [string, string];
