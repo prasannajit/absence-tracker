@@ -4,7 +4,7 @@ import { RootState } from '../../store';
 import { generateCalFile, downloadToFile } from '../../helpers';
 import noRecords from './no_records.png';
 import { DownloadCalFile, NoRecords } from '../../locale';
-import { StyledSection, StyledParagraph, StyledDiv, StyledImg, StyledButton } from './styled';
+import { StyledSection, StyledH1, StyledParagraph, StyledDiv, StyledImg, StyledButton } from './styled';
 
 /**
  * Summary component that shows total no of records and provides
@@ -24,7 +24,7 @@ const Summary = ({ count }: { count: number }) => {
         if (count === 0) {
             return <StyledDiv>
                 <StyledImg src={noRecords} height="64" width="64" alt="No records found"></StyledImg>
-                <p className="SummaryDetails" tabIndex={0}>{NoRecords}</p>
+                <StyledParagraph tabIndex={0}>{NoRecords}</StyledParagraph>
             </StyledDiv>
         } else {
             return (
@@ -38,7 +38,7 @@ const Summary = ({ count }: { count: number }) => {
     return (
         <StyledSection>
             <header tabIndex={0}>
-                <h1>Absence Tracker</h1>
+                <StyledH1>Absence Tracker</StyledH1>
             </header>
             {getContent(count)}
         </StyledSection>

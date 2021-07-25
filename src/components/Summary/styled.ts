@@ -9,9 +9,9 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledParagraph = styled.p`
-    font-size: 14px;
+    font-size: 18px;
     line-height: 21px;
-    font-weight: 500;
+    font-weight: 400;
     color: #575d64;
     margin: 0;
 `;
@@ -43,4 +43,10 @@ export const StyledButton = styled.button`
   & :hover{
     background: #e5e9ed;
   }
+`;
+
+export const StyledH1 = styled.h1`
+    font-size: 40px;
+    margin-bottom: 16px;
+    margin-top: 20px;
 `;
