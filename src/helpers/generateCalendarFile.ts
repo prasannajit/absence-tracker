@@ -19,7 +19,6 @@ const generateEvents = (data: Array<APIResponse>) => {
 
 const generateCalFile = (data: Array<APIResponse>) => {
     const events = generateEvents(data);
-    console.log(events);
     const { value='' } = ics.createEvents(events as ics.EventAttributes[]);
     return value;
 };

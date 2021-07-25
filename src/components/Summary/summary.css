@@ -14,3 +14,13 @@
     margin: 0;
   }
   
+  .NoResultsWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .NoRecordsImg{
+    margin-bottom: 16px;
+  }

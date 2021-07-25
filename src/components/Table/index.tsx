@@ -13,16 +13,17 @@ const Table = ({ data }: { data: Array<APIResponse> }) => {
     return (
         <section className="TableWrapper" style={{ height: 700, width: '80%' }}>
             <Summary count={data.length} />
-            <DataGrid
+            {data.length ? (<DataGrid
                 {...formattedData}
                 pageSize={pageSize}
                 onPageSizeChange={handlePageSizeChange}
                 rowsPerPageOptions={[10, 20, 50]}
                 components={{
                     Toolbar: GridToolbar,
-                  }}
+                }}
                 pagination
-            />
+            />):null}
+
         </section>
     )
 };
