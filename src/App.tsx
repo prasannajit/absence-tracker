@@ -8,8 +8,8 @@ import Table from './components/Table';
 import { APITriggerStatus, APIUrl } from './types';
 import './App.css';
 
-const API_URL_ABSENCES: APIUrl = ['absences', 'http://localhost:8081/absences'];
-const API_URL_MEMBERS: APIUrl = ['members', 'http://localhost:8081/members'];
+const API_URL_ABSENCES: APIUrl = ['absences', 'https://express-server-prasan.herokuapp.com/absences'];
+const API_URL_MEMBERS: APIUrl = ['members', 'https://express-server-prasan.herokuapp.com/members'];
 
 function App() {
   const urls = useMemo(() => [API_URL_ABSENCES, API_URL_MEMBERS], []);
