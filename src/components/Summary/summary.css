@@ -1,0 +1,16 @@
+.SummarySectionWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .SummaryDetails {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    color: #575d64;
+    margin: 0;
+  }
+  

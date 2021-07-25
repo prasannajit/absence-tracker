@@ -1,14 +1,29 @@
 import React from 'react';
-import { DataGrid, GridToolbar } from '@material-ui/data-grid';
+import { DataGrid, GridToolbar, GridPageChangeParams } from '@material-ui/data-grid';
+import Summary from '../Summary';
 import { prepareTableData } from '../../helpers';
 import { APIResponse } from '../../types';
 
 const Table = ({ data }: { data: Array<APIResponse> }) => {
+    const [pageSize, setPageSize] = React.useState<number>(10);
+    const handlePageSizeChange = (params: GridPageChangeParams) => {
+        setPageSize(params.pageSize);
+    };
     const formattedData = prepareTableData(data);
     return (
-        <div style={{ height: 400, width: '100%' }}>
-            <DataGrid {...formattedData} />
-        </div>
+        <section className="TableWrapper" style={{ height: 700, width: '80%' }}>
+            <Summary count={data.length} />
+            <DataGrid
+                {...formattedData}
+                pageSize={pageSize}
+                onPageSizeChange={handlePageSizeChange}
+                rowsPerPageOptions={[10, 20, 50]}
+                components={{
+                    Toolbar: GridToolbar,
+                  }}
+                pagination
+            />
+        </section>
     )
 };
 

@@ -6,6 +6,7 @@ import Loader from './components/Loader';
 import Error from './components/Error';
 import Table from './components/Table';
 import { APITriggerStatus, APIUrl } from './types';
+import './App.css';
 
 const API_URL_ABSENCES: APIUrl = ['absences', 'http://localhost:8081/absences'];
 const API_URL_MEMBERS: APIUrl = ['members', 'http://localhost:8081/members'];
@@ -15,6 +16,7 @@ function App() {
   const status = useSelector((state: RootState) => state.APIStatus.status);
   const data = useSelector((state: RootState) => state.APIData.data);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchDataAction(urls));
   }, [urls, dispatch]);
@@ -33,9 +35,9 @@ function App() {
   }
 
   return (
-    <div>
+    <main className="AppWrapper">
       {getElement(status)}
-    </div>
+    </main>
   );
 }
 
