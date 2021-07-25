@@ -9,8 +9,8 @@ const prepareTableData = (data: Array<APIResponse>) => {
     const columns: GridColDef[] = [
         {
             field: 'image',
-            description: 'Avatar',
-            headerName: 'Avatar',
+            description: 'Photo',
+            headerName: 'Photo',
             flex: 1,
             filterable: false,
             sortable: false,
