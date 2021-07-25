@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { APIResponse } from '../types';
+import { AnyObject } from '../types';
 const FETCH_ABORTED_ERROR = 'AbortError';
 
 /**
@@ -12,7 +12,7 @@ const FETCH_ABORTED_ERROR = 'AbortError';
  */
 const useFetch = (urls: string[]) => {
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState<Array<APIResponse>>([]);
+    const [data, setData] = useState<Array<AnyObject>>([]);
     const [error, setError] = useState(false);
 
     useEffect(() => {
@@ -29,10 +29,10 @@ const useFetch = (urls: string[]) => {
                 const promiseList: Array<Promise<Response>> = [];
                 urls.forEach(url => promiseList.push(fetch(url, { signal })))
                 const responseList = await Promise.all(promiseList);
-                const result: Array<APIResponse> = [];
+                const result: Array<AnyObject> = [];
                 for (const response of responseList) {
                     if (response.ok) {
-                        const apiData: APIResponse = await response.json();
+                        const apiData: AnyObject = await response.json();
                         result.push(apiData);
                     }
                 }

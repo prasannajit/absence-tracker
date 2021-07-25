@@ -1,7 +1,13 @@
-import { APIResponse } from "../types";
+import { AnyObject } from "../types";
 import * as ics from 'ics';
 
-const generateEvents = (data: Array<APIResponse>) => {
+/**
+ * Generates events to be used to generate ics file
+ * @param data - combined member and absence records
+ * @returns events - to be converted to ics format
+ */
+const generateEvents = (data: Array<AnyObject>) => {
+    /** Generate events for approved leaves */
     const approvedLeaves = data.filter(row => {
         return row.confirmedAt !== null;
     });
@@ -17,7 +23,12 @@ const generateEvents = (data: Array<APIResponse>) => {
     return events;
 };
 
-const generateCalFile = (data: Array<APIResponse>) => {
+/**
+ * 
+ * @param data - combined member and absence records
+ * @returns ics file data
+ */
+const generateCalFile = (data: Array<AnyObject>) => {
     const events = generateEvents(data);
     const { value='' } = ics.createEvents(events as ics.EventAttributes[]);
     return value;

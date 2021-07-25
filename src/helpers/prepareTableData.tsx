@@ -1,11 +1,47 @@
 import React from 'react';
-import { APIResponse, AbsenceStatus } from "../types";
+import { AnyObject, AbsenceStatus } from "../types";
 import { nanoid } from 'nanoid';
 import { GridColDef, GridCellParams } from '@material-ui/data-grid';
-import './helpers.css';
+import { Tooltip } from '@material-ui/core'
+import { StyledDiv } from './styled';
 
-const prepareTableData = (data: Array<APIResponse>) => {
-    let rows: Array<APIResponse> = [];
+/**
+ * Returns leave approval status
+ * @param rejectedAt  - rejectedAt datetime string
+ * @param confirmedAt - confirmedAt datetime string
+ * @returns - approval status
+ */
+const getApprovalStatus = (rejectedAt: string, confirmedAt: string) => {
+    let status: AbsenceStatus = AbsenceStatus.REQUESTED;
+    /** If  rejectedAt field has value absence request is rejected*/
+    if (rejectedAt) {
+        status = AbsenceStatus.REJECTED;
+    } else if (confirmedAt) {
+        /** If  confirmedAt field has value absence request is confirmed*/
+        status = AbsenceStatus.CONFIRMED;
+    }
+    return status;
+};
+
+/**
+ * Calculates the diff between start and end dates
+ * @param start - start date
+ * @param end - end date
+ * @returns - difference between start and end in days
+ */
+const diffInDays = (start: string, end: string) => {
+    let startDate = new Date(start);
+    let endDate = new Date(end);
+    return (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+};
+
+/**
+ * 
+ * @param data - combined member and absence records
+ * @returns formatted data to be used by material-ui data grid component
+ */
+const prepareTableData = (data: Array<AnyObject>) => {
+    let rows: Array<AnyObject> = [];
     const columns: GridColDef[] = [
         {
             field: 'image',
@@ -18,14 +54,14 @@ const prepareTableData = (data: Array<APIResponse>) => {
                 return (<>
                     <img
                         src={params.value as string}
-                        loading="lazy" alt="avatar"
+                        loading="lazy" alt="member"
                         style={{ height: '80px', width: '80px' }}
                     />
                 </>)
             }
         },
         { field: 'name', type: 'string', headerName: 'Name', description: 'Name', filterable: false, flex: 1, },
-        { field: 'type', type: 'string', headerName: 'Type', description: 'Type', flex: 1, },
+        { field: 'type', type: 'string', headerName: 'Type', description: 'Type', flex: 0.9, },
         {
             field: 'memberNote',
             type: 'string',
@@ -34,15 +70,17 @@ const prepareTableData = (data: Array<APIResponse>) => {
             filterable: false,
             flex: 1,
             renderCell: (params: GridCellParams) => {
-                return (<>
-                    <div className="showEllipsis" title={params.value as string}>{params.value}</div>
-                </>)
+                return (
+                    <Tooltip title={params.value as string}>
+                        <StyledDiv>{params.value}</StyledDiv>
+                    </Tooltip>
+                )
             }
         },
         { field: 'startDate', type: 'date', headerName: 'Start Date', description: 'Start Date', flex: 1, },
         { field: 'endDate', type: 'date', headerName: 'End Date', description: 'End Date', flex: 1, },
-        { field: 'period', type: 'number', headerName: 'Period', description: 'Period in days', filterable: false, flex: 1, },
-        { field: 'status', type: 'string', headerName: 'Status', description: 'Status', filterable: false, flex: 1, },
+        { field: 'period', type: 'number', headerName: 'Period', description: 'Period in days', filterable: false, flex: 0.9, },
+        { field: 'status', type: 'string', headerName: 'Status', description: 'Status', filterable: false, flex: 0.9, },
         {
             field: 'admitterNote',
             type: 'string',
@@ -51,9 +89,11 @@ const prepareTableData = (data: Array<APIResponse>) => {
             filterable: false,
             flex: 1,
             renderCell: (params: GridCellParams) => {
-                return (<>
-                    <div className="showEllipsis" title={params.value as string}>{params.value}</div>
-                </>)
+                return (
+                    <Tooltip title={params.value as string}>
+                        <StyledDiv>{params.value}</StyledDiv>
+                    </Tooltip>
+                )
             }
         },
     ];
@@ -63,26 +103,11 @@ const prepareTableData = (data: Array<APIResponse>) => {
     };
     const rowsData = data.map(row => {
         const { name, image, type, startDate, endDate, memberNote, admitterNote, rejectedAt, confirmedAt } = row;
-        let start = new Date(startDate);
-        let end = new Date(endDate);
-        const period = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-        let status: AbsenceStatus = AbsenceStatus.REQUESTED;
-        if (rejectedAt) {
-            status = AbsenceStatus.REJECTED;
-        } else if (confirmedAt) {
-            status = AbsenceStatus.CONFIRMED;
-        }
+        const period = diffInDays(startDate,endDate);
+        let status = getApprovalStatus(rejectedAt, confirmedAt);
         return {
-            id: nanoid(),
-            name,
-            type,
-            startDate,
-            endDate,
-            memberNote,
-            admitterNote,
-            period,
-            status,
-            image,
+            id: nanoid(), name, type, startDate, endDate, memberNote,
+            admitterNote, period, status, image,
         }
     });
     formattedData.rows = rowsData;

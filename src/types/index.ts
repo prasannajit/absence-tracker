@@ -1,4 +1,4 @@
-export type APIResponse = { [key: string]: any };
+export type AnyObject = { [key: string]: any };
 
 export enum APITriggerStatus {
     NONE,

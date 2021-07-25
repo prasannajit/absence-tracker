@@ -3,8 +3,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { generateCalFile, downloadToFile } from '../../helpers';
 import noRecords from './no_records.png';
-import './summary.css';
+import { DownloadCalFile, NoRecords } from '../../locale';
+import { StyledSection, StyledParagraph, StyledDiv, StyledImg, StyledButton } from './styled';
 
+/**
+ * Summary component that shows total no of records and provides
+ * a button to download ics file
+ * @param {count} no of records
+ * @returns 
+ */
 const Summary = ({ count }: { count: number }) => {
     const data = useSelector((state: RootState) => state.APIData.data);
     const handleSubmit = () => {
@@ -15,26 +22,26 @@ const Summary = ({ count }: { count: number }) => {
     };
     const getContent = (count: number) => {
         if (count === 0) {
-            return <div className="NoResultsWrapper">
-                <img className="NoRecordsImg"src={noRecords} height="64" width="64" alt="No records found"></img>
-                <p className="SummaryDetails" tabIndex={0}>No records found. Please add absence records to view data.</p>
-            </div>
+            return <StyledDiv>
+                <StyledImg src={noRecords} height="64" width="64" alt="No records found"></StyledImg>
+                <p className="SummaryDetails" tabIndex={0}>{NoRecords}</p>
+            </StyledDiv>
         } else {
             return (
                 <>
-                    <p className="SummaryDetails" tabIndex={0}>Total absences : {count}</p>
-                    <button className="PrimaryBtn" onClick={handleSubmit} tabIndex={0}>Download cal file</button>
+                    <StyledParagraph tabIndex={0}>Total absences : {count}</StyledParagraph>
+                    <StyledButton className="PrimaryBtn" onClick={handleSubmit} tabIndex={0}>{DownloadCalFile}</StyledButton>
                 </>
             )
         }
     };
     return (
-        <section className="SummarySectionWrapper">
+        <StyledSection>
             <header tabIndex={0}>
                 <h1>Absence Tracker</h1>
             </header>
             {getContent(count)}
-        </section>
+        </StyledSection>
     );
 };
 

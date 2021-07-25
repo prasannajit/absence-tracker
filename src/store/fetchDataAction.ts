@@ -1,22 +1,31 @@
-import { APIResponse } from '../types';
 import { APIResponseDataActions } from './APIResponseDataSlice';
 import { APITriggerStatusActions } from './APITriggerStatusSlice';
-import { APITriggerStatus, APIUrl } from '../types';
+import { APITriggerStatus, APIUrl, AnyObject } from '../types';
 import { AppDispatch } from './index';
 
-export const fetchDataAction = (urls: Array<APIUrl>) => {
+/**
+ * Async action creator to fetch data and change state of App
+ * from pending->success | failed
+ * @param urls - urls to be
+ */
+const fetchDataAction = (urls: Array<APIUrl>) => {
     return async (dispatch: AppDispatch) => {
+        /** Dispatch action to change the state of App tp pending */
         dispatch(APITriggerStatusActions.changeState(APITriggerStatus.PENDING));
+
+        /**
+         * Async method to fetch data from api endpoints
+         */
         const fetchData = async () => {
             try {
                 const promiseList: Array<Promise<Response>> = [];
                 urls.forEach(url => promiseList.push(fetch(url[1])))
                 const responseList = await Promise.all(promiseList);
-                const result: { [key: string]: any } = {};
+                const result: AnyObject = {};
                 let index = 0;
                 for (const response of responseList) {
                     if (response.ok) {
-                        const apiData: APIResponse = await response.json();
+                        const apiData: AnyObject = await response.json();
                         result[urls[index][0]] = apiData;
                         index++;
                     }
@@ -35,11 +44,16 @@ export const fetchDataAction = (urls: Array<APIUrl>) => {
         };
         try {
             const result = await fetchData();
+            /** Dispatch action to save the api response */
             dispatch(APIResponseDataActions.saveData({ ...result }));
+            /** Dispatch action to change the state of App to success */
             dispatch(APITriggerStatusActions.changeState(APITriggerStatus.SUCCESS));
         }
         catch (e) {
+            /** Dispatch action to change the state of App to failed */
             dispatch(APITriggerStatusActions.changeState(APITriggerStatus.FAILED));
         }
     };
 }
+
+export default fetchDataAction;

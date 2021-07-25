@@ -1,22 +1,33 @@
 import React from 'react';
-import './error.css';
 import error_logo from './error_icon.svg';
-
+import { SomethingWrong, TryAgain, Retry } from '../../locale';
+import {
+    StyledSection,
+    StyledHeader,
+    StyledH1,
+    StyledImg,
+    StyledParagraph,
+    StyledButton,
+} from './styled';
+/**
+ * Error component to be used when API call failed
+ * @returns 
+ */
 const Error = () => {
     const handleClick = () => {
         window.history.go(0);
     };
     return (
-        <section className="ErrorSectionWrapper">
-            <header className="ErrorHeading">
+        <StyledSection>
+            <StyledHeader>
                 <figure>
-                    <img className="ErrorHeadingIcon" src={error_logo} width="36px" height="36px" alt="Error" />
+                    <StyledImg src={error_logo} width="36px" height="36px" alt="Error" />
                 </figure>
-                <h1 className="ErrorHeadingText">Something went wrong</h1>
-            </header>
-            <p className="RetryMessage">Please retry by clicking the button below</p>
-            <button className="PrimaryBtn" onClick={handleClick}>Try again</button>
-        </section>
+                <StyledH1>{SomethingWrong}</StyledH1>
+            </StyledHeader>
+            <StyledParagraph>{TryAgain}</StyledParagraph>
+            <StyledButton onClick={handleClick}>{Retry}</StyledButton>
+        </StyledSection>
     )
 };
 
