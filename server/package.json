@@ -8,7 +8,9 @@
     "ts:init": "tsc --init",
     "start:build": "tsc -w",
     "start:server": "nodemon build/index.js",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "build": "tsc",
+    "dev": "node build/index.js"
   },
   "author": "",
   "license": "MIT",
