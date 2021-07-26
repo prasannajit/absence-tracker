@@ -14,7 +14,7 @@ const combineRecords = (members: Array<Member>, absences: Array<Absence>): Array
     const combinedData = [];
     for (const member of members) {
         const { userId, name, image } = member;
-        /** Create a map of userId to member data */
+        /** Create a map of userId to member data(name and image) */
         map.set(userId, {name,image});
     }
     for (const absence of absences) {

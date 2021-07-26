@@ -1,3 +1,5 @@
+/** Locale file for Absence tracker application */
+
 export const SomethingWrong = 'Something went wrong';
 export const TryAgain = 'Please retry by clicking the button below';
 export const Retry = 'Try again';

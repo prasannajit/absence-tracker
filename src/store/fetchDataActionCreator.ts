@@ -9,7 +9,7 @@ import { AppDispatch } from './index';
  * from pending->success | failed
  * @param urls - urls to be
  */
-const fetchDataAction = (urls: Array<APIUrl>) => {
+const fetchDataActionCreator = (urls: Array<APIUrl>) => {
     return async (dispatch: AppDispatch) => {
         /** Dispatch action to change the state of App tp pending */
         dispatch(APITriggerStatusActions.changeState(APITriggerStatus.PENDING));
@@ -54,4 +54,4 @@ const fetchDataAction = (urls: Array<APIUrl>) => {
     };
 }
 
-export default fetchDataAction;
+export default fetchDataActionCreator;

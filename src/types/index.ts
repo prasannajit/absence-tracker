@@ -1,3 +1,5 @@
+/** Types used across application */
+
 export type AnyObject = { [key: string]: any };
 
 export interface APIResponseObject {

@@ -11,6 +11,7 @@ const generateEvents = (data: Array<CombinedRecord>) => {
     const approvedLeaves = data.filter(row => {
         return row.confirmedAt !== null;
     });
+    /** Creat events based on ics module requirements */
     const events = approvedLeaves.map(row => {
         const { name, memberNote, startDate, endDate } = row;
         const title = `${name} is on leave`;

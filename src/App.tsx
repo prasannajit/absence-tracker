@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import fetchDataAction  from './store/fetchDataAction';
+import fetchDataActionCreator  from './store/fetchDataActionCreator';
 import { RootState } from './store';
 import Loader from './components/Loader';
 import Error from './components/Error';
@@ -25,7 +25,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     /** Trigger an api call to fetch required data */
-    dispatch(fetchDataAction(urls));
+    dispatch(fetchDataActionCreator(urls));
   }, [urls, dispatch]);
 
   /**

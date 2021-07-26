@@ -19,6 +19,7 @@ const Summary = ({ data }: { data: Array<CombinedRecord> }) => {
         }
     };
     const getContent = (count: number) => {
+        /** No result scenario */
         if (count === 0) {
             return <StyledDiv>
                 <StyledImg src={noRecords} height="64" width="64" alt="No records found"></StyledImg>

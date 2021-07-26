@@ -18,7 +18,7 @@ const Table = ({ data }: { data: Array<CombinedRecord> }) => {
     const handlePageSizeChange = (params: GridPageChangeParams) => {
         setPageSize(params.pageSize);
     };
-
+    /** Format data as per DataGrid component's requirements */
     const formattedData = prepareTableData(data);
     return (
         <StyledDiv>
