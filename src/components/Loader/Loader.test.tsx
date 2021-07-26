@@ -6,8 +6,9 @@ describe('Loader component test suite', () => {
     afterEach(() => {
       jest.restoreAllMocks();
     });
+    
     describe('Loader component', () => {
-      test('Renders Loader component', async () => {
+      test('Renders Loader component successfully', async () => {
         render(<Loader />);
         expect(screen.getByTestId('at-loader-section')).toBeInTheDocument();
       });

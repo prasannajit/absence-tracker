@@ -9,8 +9,9 @@ describe('App component test suite', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
+
   describe('Renders APP component', () => {
-    test('Renders Loader component', async () => {
+    test('Renders Loader component successfully', async () => {
       const data = JSON.parse(MockAPIResponse);
       const promise = Promise.resolve(data);
       window.fetch = jest.fn(() => {

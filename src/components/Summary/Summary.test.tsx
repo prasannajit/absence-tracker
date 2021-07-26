@@ -7,12 +7,14 @@ describe('Summary component test suite', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
+    
     describe('Summary component', () => {
-        test('Renders Summary component', async () => {
+        test('Renders Summary component successfully', async () => {
             render(<Summary data={JSON.parse(MockAPIResponse)} />);
             expect(screen.getByText('Absence Tracker')).toBeInTheDocument();
             expect(screen.getByText('Total absences : 42')).toBeInTheDocument();
         });
+
         test('Renders Summary component with no records', async () => {
             render(<Summary data={[]} />);
             expect(screen.getByText('No records found. Please add absence records to view data.')).toBeInTheDocument();

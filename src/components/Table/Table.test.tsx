@@ -7,6 +7,7 @@ describe('Table component test suite', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
+    
     describe('Table component', () => {
         test('Renders Table component', async () => {
             render(<Table data={JSON.parse(MockAPIResponse)} />);

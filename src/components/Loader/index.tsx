@@ -13,7 +13,6 @@ const Loader = () => {
             <Skeleton variant="text" width="400px" height="20px"></Skeleton>
             <Skeleton variant="circle" width="60px" height="20px" />
         </StyledDiv>
-        <br />
         <Skeleton variant="rect" width="800px" height="600px" />
     </StyledSection>);
 };

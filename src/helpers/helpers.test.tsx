@@ -4,6 +4,7 @@ describe('Helpers test suite', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
+    
     describe('Helper module tests', () => {
         test('Combine records successfully', () => {
             const absences = [{
