@@ -22,7 +22,6 @@ const App = () => {
   const data = useSelector((state: RootState) => state.APIData.data);
   /** Dispatch function to trigger an action */
   const dispatch = useDispatch();
-
   useEffect(() => {
     /** Trigger an api call to fetch required data */
     dispatch(fetchDataAction(urls));

@@ -12,10 +12,7 @@ const fetchDataAction = (urls: Array<APIUrl>) => {
     return async (dispatch: AppDispatch) => {
         /** Dispatch action to change the state of App tp pending */
         dispatch(APITriggerStatusActions.changeState(APITriggerStatus.PENDING));
-
-        /**
-         * Async method to fetch data from api endpoints
-         */
+        /** Async method to fetch data from api endpoints */
         const fetchData = async () => {
             try {
                 const promiseList: Array<Promise<Response>> = [];

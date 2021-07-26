@@ -3,6 +3,7 @@ import { DataGrid, GridToolbar, GridPageChangeParams } from '@material-ui/data-g
 import Summary from '../Summary';
 import { prepareTableData } from '../../helpers';
 import { AnyObject } from '../../types';
+import {StyledDiv} from './styled';
 
 /**
  * Table component that uses material-ui's datagrid component
@@ -21,7 +22,7 @@ const Table = ({ data }: { data: Array<AnyObject> }) => {
     const formattedData = prepareTableData(data);
 
     return (
-        <section className="TableWrapper" style={{ height: 700, width: '80%' }}>
+        <StyledDiv>
             <Summary count={data.length} />
             {data.length ? (<DataGrid
                 {...formattedData}
@@ -32,9 +33,8 @@ const Table = ({ data }: { data: Array<AnyObject> }) => {
                     Toolbar: GridToolbar,
                 }}
                 pagination
-            />):null}
-
-        </section>
+            />) : null}
+        </StyledDiv>
     )
 };
 
