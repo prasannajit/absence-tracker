@@ -37,9 +37,9 @@ Step 3: Change absences and members url
 
 ->cd src/config
 
-Update API_URL_ABSENCES to <http://localhost:8081/absences>
+Update API_URL_ABSENCES to <http://localhost:8081/absences> in index.ts file
 
-Updated API_URL_MEMBERS to <http://localhost:8081/members>
+Updated API_URL_MEMBERS to <http://localhost:8081/members> in index.ts file
 
 Step 4: Start the server in a new terminal
 
