@@ -1,10 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 import { generateCalFile, downloadToFile } from '../../helpers';
-import noRecords from './no_records.png';
 import { DownloadCalFile, NoRecords } from '../../locale';
+import { AnyObject } from '../../types';
 import { StyledSection, StyledH1, StyledParagraph, StyledDiv, StyledImg, StyledButton } from './styled';
+import noRecords from './no_records.png';
 
 /**
  * Summary component that shows total no of records and provides
@@ -12,8 +11,7 @@ import { StyledSection, StyledH1, StyledParagraph, StyledDiv, StyledImg, StyledB
  * @param {count} no of records
  * @returns 
  */
-const Summary = ({ count }: { count: number }) => {
-    const data = useSelector((state: RootState) => state.APIData.data);
+const Summary = ({ data }: { data: Array<AnyObject> }) => {
     const handleSubmit = () => {
         const fileData = generateCalFile(data);
         if (fileData) {
@@ -40,7 +38,7 @@ const Summary = ({ count }: { count: number }) => {
             <header tabIndex={0}>
                 <StyledH1>Absence Tracker</StyledH1>
             </header>
-            {getContent(count)}
+            {getContent(data.length)}
         </StyledSection>
     );
 };

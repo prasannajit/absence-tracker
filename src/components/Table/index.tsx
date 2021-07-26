@@ -20,10 +20,9 @@ const Table = ({ data }: { data: Array<AnyObject> }) => {
     };
 
     const formattedData = prepareTableData(data);
-
     return (
         <StyledDiv>
-            <Summary count={data.length} />
+            <Summary data={data} />
             {data.length ? (<DataGrid
                 {...formattedData}
                 pageSize={pageSize}
