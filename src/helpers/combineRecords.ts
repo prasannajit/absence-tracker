@@ -10,12 +10,13 @@ const combineRecords = (members: Array<AnyObject>, absences: Array<AnyObject>): 
     const map = new Map();
     const combinedData = [];
     for (const member of members) {
-        const { userId } = member;
+        const { userId, name, image } = member;
         /** Create a map of userId to member data */
-        map.set(userId, member);
+        map.set(userId, {name,image});
     }
     for (const absence of absences) {
-        combinedData.push({ ...absence, ...map.get(absence.userId) })
+        const memberDetails = map.get(absence.userId);
+        combinedData.push({ ...absence, ...memberDetails })
     }
     return combinedData;
 };

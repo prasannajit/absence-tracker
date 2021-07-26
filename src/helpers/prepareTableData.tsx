@@ -47,7 +47,7 @@ const prepareTableData = (data: Array<AnyObject>) => {
             field: 'image',
             description: 'Photo',
             headerName: 'Photo',
-            flex: 1,
+            flex: 0.7,
             filterable: false,
             sortable: false,
             renderCell: (params: GridCellParams) => {
@@ -55,12 +55,12 @@ const prepareTableData = (data: Array<AnyObject>) => {
                     <img
                         src={params.value as string}
                         loading="lazy" alt="member"
-                        style={{ height: '80px', width: '80px' }}
+                        style={{ height: '60px', width: '60px' }}
                     />
                 </>)
             }
         },
-        { field: 'name', type: 'string', headerName: 'Name', description: 'Name', filterable: false, flex: 1, },
+        { field: 'name', type: 'string', headerName: 'Name', description: 'Name', flex: 1, },
         { field: 'type', type: 'string', headerName: 'Type', description: 'Type', flex: 0.9, },
         {
             field: 'memberNote',
