@@ -1,4 +1,4 @@
-import { AnyObject } from "../types";
+import { Absence, Member, CombinedRecord } from "../types";
 
 /**
  * Combines absence and member records into one record set
@@ -6,7 +6,7 @@ import { AnyObject } from "../types";
  * @param absences - absence records
  * @returns single record set that has both the data combined
  */
-const combineRecords = (members: Array<AnyObject>, absences: Array<AnyObject>): Array<AnyObject> => {
+const combineRecords = (members: Array<Member>, absences: Array<Absence>): Array<CombinedRecord> => {
     const map = new Map();
     const combinedData = [];
     for (const member of members) {

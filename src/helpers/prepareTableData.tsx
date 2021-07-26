@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnyObject, AbsenceStatus } from "../types";
+import { CombinedRecord, AbsenceStatus, AnyObject } from "../types";
 import { nanoid } from 'nanoid';
 import { GridColDef, GridCellParams } from '@material-ui/data-grid';
 import { Tooltip } from '@material-ui/core'
@@ -40,7 +40,7 @@ const diffInDays = (start: string, end: string) => {
  * @param data - combined member and absence records
  * @returns formatted data to be used by material-ui data grid component
  */
-const prepareTableData = (data: Array<AnyObject>) => {
+const prepareTableData = (data: Array<CombinedRecord>) => {
     let rows: Array<AnyObject> = [];
     const columns: GridColDef[] = [
         {

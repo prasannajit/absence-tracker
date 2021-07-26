@@ -2,7 +2,7 @@ import React from 'react';
 import { DataGrid, GridToolbar, GridPageChangeParams } from '@material-ui/data-grid';
 import Summary from '../Summary';
 import { prepareTableData } from '../../helpers';
-import { AnyObject } from '../../types';
+import { CombinedRecord } from '../../types';
 import {StyledDiv} from './styled';
 
 /**
@@ -11,7 +11,7 @@ import {StyledDiv} from './styled';
  * @param {data} - combined record set of absences and members
  * @returns react node
  */
-const Table = ({ data }: { data: Array<AnyObject> }) => {
+const Table = ({ data }: { data: Array<CombinedRecord> }) => {
     const [pageSize, setPageSize] = React.useState<number>(10);
 
     /** Handle records per page change by user */

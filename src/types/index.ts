@@ -1,5 +1,9 @@
 export type AnyObject = { [key: string]: any };
 
+export interface APIResponseObject {
+    [key: string]: Array<Absence> | Array<Member>
+}
+
 export interface Member {
     crewId: number,
     id: number,
@@ -11,19 +15,19 @@ export interface Member {
 export interface Absence {
     admitterId: number | null,
     admitterNote: string,
-    confirmedAt: string,
+    confirmedAt: string | null,
     createdAt: string,
     crewId: number,
     endDate: string,
     id: number,
     memberNote: string,
-    rejectedAt: string,
+    rejectedAt: string | null,
     startDate: string,
     type: string,
     userId: number,
 }
 
-export interface CombinedRecord{
+export interface CombinedRecord {
     admitterId: number | null,
     admitterNote: string,
     confirmedAt: string,

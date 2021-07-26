@@ -1,4 +1,4 @@
-import { AnyObject } from "../types";
+import { CombinedRecord } from "../types";
 import * as ics from 'ics';
 
 /**
@@ -6,7 +6,7 @@ import * as ics from 'ics';
  * @param data - combined member and absence records
  * @returns events - to be converted to ics format
  */
-const generateEvents = (data: Array<AnyObject>) => {
+const generateEvents = (data: Array<CombinedRecord>) => {
     /** Generate events for approved leaves */
     const approvedLeaves = data.filter(row => {
         return row.confirmedAt !== null;
@@ -28,10 +28,10 @@ const generateEvents = (data: Array<AnyObject>) => {
  * @param data - combined member and absence records
  * @returns ics file data
  */
-const generateCalFile = (data: Array<AnyObject>) => {
+const generateCalendarFile = (data: Array<CombinedRecord>) => {
     const events = generateEvents(data);
     const { value='' } = ics.createEvents(events as ics.EventAttributes[]);
     return value;
 };
 
-export default generateCalFile;
+export default generateCalendarFile;

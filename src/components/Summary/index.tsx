@@ -1,7 +1,7 @@
 import React from 'react';
-import { generateCalFile, downloadToFile } from '../../helpers';
+import { generateCalendarFile, downloadToFile } from '../../helpers';
 import { DownloadCalFile, NoRecords } from '../../locale';
-import { AnyObject } from '../../types';
+import { CombinedRecord } from '../../types';
 import { StyledSection, StyledH1, StyledParagraph, StyledDiv, StyledImg, StyledButton } from './styled';
 import noRecords from './no_records.png';
 
@@ -11,9 +11,9 @@ import noRecords from './no_records.png';
  * @param {count} no of records
  * @returns 
  */
-const Summary = ({ data }: { data: Array<AnyObject> }) => {
+const Summary = ({ data }: { data: Array<CombinedRecord> }) => {
     const handleSubmit = () => {
-        const fileData = generateCalFile(data);
+        const fileData = generateCalendarFile(data);
         if (fileData) {
             downloadToFile(fileData, 'leaves.ics', 'text/plain');
         }

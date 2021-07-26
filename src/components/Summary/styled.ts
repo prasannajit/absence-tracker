@@ -40,7 +40,7 @@ export const StyledButton = styled.button`
   color: #24272e;
   font-family: Poppins, Arial, sans-serif;
   cursor: pointer;
-  & :hover{
+  &:hover{
     background: #e5e9ed;
   }
 `;

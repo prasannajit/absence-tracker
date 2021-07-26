@@ -1,6 +1,7 @@
 import { APIResponseDataActions } from './APIResponseDataSlice';
 import { APITriggerStatusActions } from './APITriggerStatusSlice';
-import { APITriggerStatus, APIUrl, AnyObject } from '../types';
+import { APITriggerStatus } from '../types';
+import type { APIUrl, Absence, Member, APIResponseObject } from '../types'
 import { AppDispatch } from './index';
 
 /**
@@ -18,11 +19,11 @@ const fetchDataAction = (urls: Array<APIUrl>) => {
                 const promiseList: Array<Promise<Response>> = [];
                 urls.forEach(url => promiseList.push(fetch(url[1])))
                 const responseList = await Promise.all(promiseList);
-                const result: AnyObject = {};
+                let result: APIResponseObject={};
                 let index = 0;
                 for (const response of responseList) {
                     if (response.ok) {
-                        const apiData: AnyObject = await response.json();
+                        const apiData: Array<Member>|Array<Absence> = await response.json();
                         result[urls[index][0]] = apiData;
                         index++;
                     }
