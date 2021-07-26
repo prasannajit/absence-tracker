@@ -26,8 +26,11 @@ git clone <https://github.com/prasannajit/react-test.git>
 Step 2: Install node packages (server and react app)
 
 ->npm install
+
 ->cd server
+
 ->npm install
+
 ->cd ..
 
 Step 3: Change absences and members url
@@ -42,7 +45,9 @@ Step 4: Start the server in a new terminal
 Open a new terminal
 
 ->cd server
+
 ->npm run build
+
 ->npm run dev
 
 Step 5: Start the react application
