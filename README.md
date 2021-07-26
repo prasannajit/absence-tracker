@@ -5,8 +5,11 @@ Absence tracker is a web application to view, sort and filter absence records. T
 ## Quick Demo
 
 The application is hosted on Netlify and available on the be below mentioned URL;
+
 <https://absence-tracker.netlify.app>
+
 The application uses two endpoints to get member and absence records.
+
 <https://express-server-prasan.herokuapp.com/members>
 <https://express-server-prasan.herokuapp.com/absences>
 
