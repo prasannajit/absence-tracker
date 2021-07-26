@@ -6,10 +6,11 @@ import Loader from './components/Loader';
 import Error from './components/Error';
 import Table from './components/Table';
 import { APITriggerStatus, APIUrl } from './types';
+import config from './config';
 import {StyledMain} from './styled';
 
-const API_URL_ABSENCES: APIUrl = ['absences', 'https://express-server-prasan.herokuapp.com/absences'];
-const API_URL_MEMBERS: APIUrl = ['members', 'https://express-server-prasan.herokuapp.com/members'];
+const API_URL_ABSENCES: APIUrl = ['absences', config.API_URL_ABSENCES];
+const API_URL_MEMBERS: APIUrl = ['members', config.API_URL_MEMBERS];
 
 /**
  * React component for entire single page application

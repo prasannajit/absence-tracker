@@ -55,7 +55,7 @@ const prepareTableData = (data: Array<CombinedRecord>) => {
                     <img
                         src={params.value as string}
                         loading="lazy" alt="member"
-                        style={{ height: '60px', width: '60px' }}
+                        style={{ height: '60px', width: '60px', background: '#656060' }}
                     />
                 </>)
             }

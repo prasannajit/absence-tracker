@@ -1,5 +1,3 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { combineRecords, prepareTableData, generateCalendarFile, downloadToFile } from './index';
 
 describe('Helpers test suite', () => {
