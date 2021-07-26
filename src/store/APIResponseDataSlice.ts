@@ -10,7 +10,10 @@ const APIResponseDataSlice = createSlice({
     reducers: {
         saveData(state, action) {
             const { absences, members }: { absences: Array<Absence>, members: Array<Member> } = action.payload;
-            state.data = combineRecords(members, absences);
+            const combinedRecordSet = combineRecords(members, absences);
+            if(combinedRecordSet){
+                state.data = combinedRecordSet;
+            }
         }
     }
 });

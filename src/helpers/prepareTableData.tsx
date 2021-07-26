@@ -41,6 +41,9 @@ const diffInDays = (start: string, end: string) => {
  * @returns formatted data to be used by material-ui data grid component
  */
 const prepareTableData = (data: Array<CombinedRecord>) => {
+    if (!data.length) {
+        return;
+    }
     let rows: Array<AnyObject> = [];
     const columns: GridColDef[] = [
         {
@@ -103,7 +106,7 @@ const prepareTableData = (data: Array<CombinedRecord>) => {
     };
     const rowsData = data.map(row => {
         const { name, image, type, startDate, endDate, memberNote, admitterNote, rejectedAt, confirmedAt } = row;
-        const period = diffInDays(startDate,endDate);
+        const period = diffInDays(startDate, endDate);
         let status = getApprovalStatus(rejectedAt, confirmedAt);
         return {
             id: nanoid(), name, type, startDate, endDate, memberNote,

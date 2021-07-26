@@ -14,9 +14,9 @@ const generateEvents = (data: Array<CombinedRecord>) => {
     const events = approvedLeaves.map(row => {
         const { name, memberNote, startDate, endDate } = row;
         const title = `${name} is on leave`;
-        const startArray:Array<string> = startDate.split('-');
+        const startArray: Array<string> = startDate.split('-');
         const start = [...startArray.map(item => parseInt(item)), 12, 0];
-        const endArray:Array<string> = endDate.split('-');
+        const endArray: Array<string> = endDate.split('-');
         const end = [...endArray.map(item => parseInt(item)), 23, 59];
         return { title, start, end, description: memberNote };
     });
@@ -29,8 +29,11 @@ const generateEvents = (data: Array<CombinedRecord>) => {
  * @returns ics file data
  */
 const generateCalendarFile = (data: Array<CombinedRecord>) => {
+    if (!data.length) {
+        return;
+    }
     const events = generateEvents(data);
-    const { value='' } = ics.createEvents(events as ics.EventAttributes[]);
+    const { value = '' } = ics.createEvents(events as ics.EventAttributes[]);
     return value;
 };
 

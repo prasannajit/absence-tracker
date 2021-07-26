@@ -24,7 +24,7 @@ const Table = ({ data }: { data: Array<CombinedRecord> }) => {
         <StyledDiv>
             <Summary data={data} />
             {data.length ? (<DataGrid
-                {...formattedData}
+                {...formattedData!}
                 pageSize={pageSize}
                 onPageSizeChange={handlePageSizeChange}
                 rowsPerPageOptions={[10, 20, 50]}

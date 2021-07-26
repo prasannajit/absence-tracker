@@ -27,6 +27,11 @@ describe('Helpers test suite', () => {
             expect(combinedRecords[0].image).toEqual('http://www.google.com/harry.jpg');
         });
 
+        test('Returns undefined when input record sets are empty', () => {
+            const combinedRecords = combineRecords([], []);
+            expect(combinedRecords).toEqual(undefined);
+        });
+
         test('Prepare table data successfully', () => {
             const gridData = prepareTableData([{
                 admitterId: null,
@@ -63,6 +68,11 @@ describe('Helpers test suite', () => {
             expect(gridData.rows.length).toEqual(2);
         });
 
+        test('Prepare table data method returns undefined when input array has no records', () => {
+            const gridData = prepareTableData([]);
+            expect(gridData).toEqual(undefined);
+        });
+
         test('Generate calendar file successfully', () => {
             const calFileData = generateCalendarFile([{
                 admitterId: null,
@@ -96,6 +106,11 @@ describe('Helpers test suite', () => {
                 image: 'http://www.google.com/jacky.jpg'
             }]);
             expect(calFileData.includes('I am sick')).toEqual(true);
+        });
+
+        test('File data is undefined when input array has no records', () => {
+            const calFileData = generateCalendarFile([]);
+            expect(calFileData).toEqual(undefined);
         });
 
         test('downloadToFile method executed successfully', () => {
