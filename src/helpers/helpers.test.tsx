@@ -1,10 +1,10 @@
-import { combineRecords, prepareTableData, generateCalendarFile, downloadToFile } from './index';
+import { combineRecords, getDataGridProps, generateCalendarFile, downloadToFile } from './index';
 
 describe('Helpers test suite', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
-    
+
     describe('Helper module tests', () => {
         test('Combine records successfully', () => {
             const absences = [{
@@ -34,7 +34,7 @@ describe('Helpers test suite', () => {
         });
 
         test('Prepare table data successfully', () => {
-            const gridData = prepareTableData([{
+            const gridData = getDataGridProps([{
                 admitterId: null,
                 admitterNote: "",
                 confirmedAt: "2020-12-12T18:03:55.000+01:00",
@@ -70,7 +70,7 @@ describe('Helpers test suite', () => {
         });
 
         test('Prepare table data method returns undefined when input array has no records', () => {
-            const gridData = prepareTableData([]);
+            const gridData = getDataGridProps([]);
             expect(gridData).toEqual(undefined);
         });
 

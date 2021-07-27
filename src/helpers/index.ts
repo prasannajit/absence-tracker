@@ -1,11 +1,11 @@
 import combineRecords from './combineRecords';
-import prepareTableData from './prepareTableData';
+import getDataGridProps from './getDataGridProps';
 import generateCalendarFile from './generateCalendarFile';
 import downloadToFile from './downloadToFile';
 
 export {
     combineRecords,
-    prepareTableData,
+    getDataGridProps,
     generateCalendarFile,
     downloadToFile,
 };

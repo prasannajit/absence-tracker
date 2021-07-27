@@ -36,11 +36,11 @@ const diffInDays = (start: string, end: string) => {
 };
 
 /**
- * 
+ * Returns props for material-ui data grid component
  * @param data - combined member and absence records
  * @returns formatted data to be used by material-ui data grid component
  */
-const prepareTableData = (data: Array<CombinedRecord>) => {
+const getDataGridProps = (data: Array<CombinedRecord>) => {
     if (!data.length) {
         return;
     }
@@ -117,4 +117,4 @@ const prepareTableData = (data: Array<CombinedRecord>) => {
     return formattedData;
 };
 
-export default prepareTableData;
+export default getDataGridProps;

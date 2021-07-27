@@ -1,7 +1,7 @@
 import React from 'react';
 import { DataGrid, GridToolbar, GridPageChangeParams } from '@material-ui/data-grid';
 import Summary from '../Summary';
-import { prepareTableData } from '../../helpers';
+import { getDataGridProps } from '../../helpers';
 import { CombinedRecord } from '../../types';
 import {StyledDiv} from './styled';
 
@@ -19,7 +19,7 @@ const Table = ({ data }: { data: Array<CombinedRecord> }) => {
         setPageSize(params.pageSize);
     };
     /** Format data as per DataGrid component's requirements */
-    const formattedData = prepareTableData(data);
+    const formattedData = getDataGridProps(data);
     return (
         <StyledDiv>
             <Summary data={data} />
