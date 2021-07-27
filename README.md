@@ -25,17 +25,17 @@ git clone <https://github.com/prasannajit/react-test.git>
 
 Step 2: Install node packages (server and react app)
 
-->npm install
+-> npm install
 
-->cd server
+-> cd server
 
-->npm install
+-> npm install
 
-->cd ..
+-> cd ..
 
 Step 3: Change absences and members url
 
-->cd src/config
+-> cd src/config
 
 Update API_URL_ABSENCES to <http://localhost:8081/absences> in index.ts file
 
@@ -45,15 +45,15 @@ Step 4: Start the server in a new terminal
 
 Open a new terminal
 
-->cd server
+-> cd server
 
-->npm run build
+-> npm run build
 
-->npm run dev
+-> npm run dev
 
 Step 5: Start the react application
 
-->npm start
+-> npm start
 
 ## Usage instructions
 
