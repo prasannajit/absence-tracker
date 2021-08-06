@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataGrid, GridToolbar, GridPageChangeParams } from '@material-ui/data-grid';
+import { DataGrid, GridToolbar } from '@material-ui/data-grid';
 import Summary from '../Summary';
 import { getDataGridProps } from '../../helpers';
 import { CombinedRecord } from '../../types';
@@ -15,8 +15,8 @@ const Table = ({ data }: { data: Array<CombinedRecord> }) => {
     const [pageSize, setPageSize] = React.useState<number>(10);
 
     /** Handle records per page change by user */
-    const handlePageSizeChange = (params: GridPageChangeParams) => {
-        setPageSize(params.pageSize);
+    const handlePageSizeChange = (pageSize:number) => {
+        setPageSize(pageSize);
     };
     /** Format data as per DataGrid component's requirements */
     const formattedData = getDataGridProps(data);
