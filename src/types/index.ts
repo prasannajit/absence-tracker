@@ -59,4 +59,17 @@ export enum AbsenceStatus {
     REQUESTED = 'Requested',
 };
 
+export interface RowData {
+    id: string,
+    name: string,
+    type: string,
+    startDate: string,
+    endDate: string,
+    memberNote: string,
+    admitterNote: string,
+    period: number,
+    status: string,
+    image: string,
+}
+
 export type APIUrl = [string, string];

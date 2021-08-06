@@ -1,8 +1,8 @@
 import React from 'react';
-import { CombinedRecord, AbsenceStatus, AnyObject } from "../types";
 import { nanoid } from 'nanoid';
 import { GridColDef, GridCellParams } from '@material-ui/data-grid';
 import { Tooltip } from '@material-ui/core'
+import { CombinedRecord, AbsenceStatus,RowData } from "../types";
 import { StyledDiv } from './styled';
 
 /**
@@ -44,7 +44,7 @@ const getDataGridProps = (data: Array<CombinedRecord>) => {
     if (!data.length) {
         return;
     }
-    let rows: Array<AnyObject> = [];
+    let rows: Array<RowData> = [];
     const columns: GridColDef[] = [
         {
             field: 'image',
